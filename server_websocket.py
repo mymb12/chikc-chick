@@ -1,21 +1,17 @@
-# --- START OF FILE server_websocket.py ---
-
 import asyncio
-import cv2
-import json
-# import random # No longer needed for simulation
-import time
-import logging
-from pathlib import Path
-from aiohttp import web
 import concurrent.futures
-# import datetime # Not needed for motion detection
+import json
+import logging
+import time
+from pathlib import Path
 
+import cv2
 import numpy as np
+from aiohttp import web
 
 # --- Configuration ---
 HOST = '0.0.0.0'
-PORT = 5000
+PORT = 5001
 WEBCAM_INDEX = 0
 FRAME_WIDTH = 640
 FRAME_HEIGHT = 480

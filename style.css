@@ -1,404 +1,613 @@
 /* Basic Reset & Body */
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 16px; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 16px;
+}
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f0f2f5;
-    color: #5A8F4D; /* Default text color, though might be overridden often */
-    -webkit-font-smoothing: antialiased; /* Improve font rendering */
-    -moz-osx-font-smoothing: grayscale;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  line-height: 1.6;
+  background-color: #f0f2f5;
+  color: #5a8f4d; /* Default text color, though might be overridden often */
+  -webkit-font-smoothing: antialiased; /* Improve font rendering */
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .app-container {
-    max-width: 100%;
-    min-height: 100vh;
-    margin: 0 auto;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
+  max-width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Content Area */
 .content-area {
-    flex-grow: 1; /* Allows content area to expand */
-    padding: 0 15px; /* Only horizontal padding */
-    display: flex; /* Make content area a flex container */
-    flex-direction: column; /* Stack its children (the panes) */
-    overflow-y: auto; /* Allow scrolling ONLY if content overflows */
-    padding-bottom: 25px; /* Add padding at the bottom INSIDE the scrollable area */
-    position: relative; /* Needed for absolute positioning of overlays on desktop */
+  flex-grow: 1; /* Allows content area to expand */
+  padding: 0 15px; /* Only horizontal padding */
+  display: flex; /* Make content area a flex container */
+  flex-direction: column; /* Stack its children (the panes) */
+  overflow-y: auto; /* Allow scrolling ONLY if content overflows */
+  padding-bottom: 25px; /* Add padding at the bottom INSIDE the scrollable area */
+  position: relative; /* Needed for absolute positioning of overlays on desktop */
 }
 
 /* Tab Panes */
 .tab-pane {
-    display: none; /* Hide inactive panes */
-    animation: fadeIn 0.3s ease-in-out;
-    width: 100%;
-    flex-shrink: 0; /* Prevent panes from shrinking */
+  display: none; /* Hide inactive panes */
+  animation: fadeIn 0.3s ease-in-out;
+  width: 100%;
+  flex-shrink: 0; /* Prevent panes from shrinking */
 }
 .tab-pane.active {
-    display: flex; /* Make active pane a flex container */
-    flex-direction: column; /* Stack its children (header, content section) */
-    flex-grow: 1; /* Allow active pane to expand within content-area */
+  display: flex; /* Make active pane a flex container */
+  flex-direction: column; /* Stack its children (header, content section) */
+  flex-grow: 1; /* Allow active pane to expand within content-area */
 }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 /* Page Header (Shared style) */
 .page-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 0 15px 0; /* Adjusted padding */
-    margin-bottom: 15px;
-    border-bottom: 1px solid #e0e0e0;
-    /* Sticky header with blur effect */
-    position: sticky; top: 0; background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); z-index: 10;
-    flex-shrink: 0; /* Prevent header from shrinking */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0 15px 0; /* Adjusted padding */
+  margin-bottom: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  /* Sticky header with blur effect */
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  z-index: 10;
+  flex-shrink: 0; /* Prevent header from shrinking */
 }
-.home-header { /* Specific for Home */
-    justify-content: center; /* Center title */
-    border-bottom: none; /* Remove border */
-    padding-top: 25px;
-    padding-bottom: 10px;
-    margin-bottom: 0; /* No margin below home header */
-    background-color: transparent; backdrop-filter: none; position: static; /* Remove sticky for home */
+.home-header {
+  /* Specific for Home */
+  justify-content: center; /* Center title */
+  border-bottom: none; /* Remove border */
+  padding-top: 25px;
+  padding-bottom: 10px;
+  margin-bottom: 0; /* No margin below home header */
+  background-color: transparent;
+  backdrop-filter: none;
+  position: static; /* Remove sticky for home */
 }
-.page-header h2, .page-header h1 { margin: 0; font-size: 1.5rem; color: #1c1e21; font-weight: 600; }
-.page-header h2 .icon { margin-right: 8px; font-size: 1.3rem; vertical-align: middle; } /* Align icon better */
+.page-header h2,
+.page-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1c1e21;
+  font-weight: 600;
+}
+.page-header h2 .icon {
+  margin-right: 8px;
+  font-size: 1.3rem;
+  vertical-align: middle;
+} /* Align icon better */
 
 /* --- App Title Styling --- */
 .app-title {
-    font-size: 5.2rem;
-    text-align: center;
-    color: #5A8F4D; /* Green color */
-    padding: 0;
-    margin: 0 0 15px 0;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-    font-family: 'Cormorant Garamond', serif; /* Use the italic font */
-    font-weight: 500; /* Adjust weight as needed */
-    font-style: italic;
+  font-size: 5.2rem;
+  text-align: center;
+  color: #5a8f4d; /* Green color */
+  padding: 0;
+  margin: 0 0 15px 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  font-family: "Cormorant Garamond", serif; /* Use the italic font */
+  font-weight: 500; /* Adjust weight as needed */
+  font-style: italic;
 }
 
 /* Page Content section (within panes) */
 .page-content {
-    flex-grow: 1; /* Allow content section to expand */
-    display: flex; /* Make it a flex container */
-    flex-direction: column; /* Stack its children */
+  flex-grow: 1; /* Allow content section to expand */
+  display: flex; /* Make it a flex container */
+  flex-direction: column; /* Stack its children */
 }
-
 
 /* Home Content specific layout */
 .home-content {
-    /* Inherits flex settings from .page-content */
-    align-items: center; /* Center children horizontally */
-    text-align: center;
-    width: 100%;
-    padding-top: 20px;
-    /* Use flex properties to push icon/slogan down */
-    justify-content: space-between; /* Push elements apart vertically */
+  /* Inherits flex settings from .page-content */
+  align-items: center; /* Center children horizontally */
+  text-align: center;
+  width: 100%;
+  padding-top: 20px;
+  /* Use flex properties to push icon/slogan down */
+  justify-content: space-between; /* Push elements apart vertically */
 }
 
 /* Project Description Styling */
 .project-description {
-    font-size: 1.15rem;
-    color: #505050;
-    text-align: center;
-    margin: 20px 0 40px 0;
-    padding: 0 15px;
-    max-width: 85%;
-    line-height: 1.6;
-    font-style: italic;
-    font-family: Georgia, Times, serif;
+  font-size: 1.15rem;
+  color: #505050;
+  text-align: center;
+  margin: 20px 0 40px 0;
+  padding: 0 15px;
+  max-width: 85%;
+  line-height: 1.6;
+  font-style: italic;
+  font-family: Georgia, Times, serif;
 }
 
 /* Placeholder Box Styling */
 .placeholder-box {
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
-    padding: 25px 20px;
-    text-align: center;
-    color: #9aa5b1;
-    border-radius: 10px;
-    width: 90%;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
-    margin-top: 20px; /* Add some space above */
-    margin-bottom: 40px; /* Add space below */
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  padding: 25px 20px;
+  text-align: center;
+  color: #9aa5b1;
+  border-radius: 10px;
+  width: 90%;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+  margin-top: 20px; /* Add some space above */
+  margin-bottom: 40px; /* Add space below */
 }
 
 /* Chicken Icon and Slogan Area */
 .home-icon-slogan-area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 30px 0 40px 0; /* Spacing */
-    flex-shrink: 0;
-    position: relative;
-    z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 30px 0 40px 0; /* Spacing */
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 
 .chicken-icon {
-    width: 45px;
-    height: 45px;
-    margin-bottom: 8px;
-    filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.15));
-    transform: scaleX(-1); /* Flip chicken */
-    opacity: 0.8;
+  width: 45px;
+  height: 45px;
+  margin-bottom: 8px;
+  filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.15));
+  transform: scaleX(-1); /* Flip chicken */
+  opacity: 0.8;
 }
 
 .slogan {
-    font-size: 1.0rem;
-    color: #7d8a70;
-    font-weight: 500;
-    text-align: center;
-    margin-top: 0;
-    font-family: "Georgia", serif;
-    letter-spacing: 0.5px;
+  font-size: 1rem;
+  color: #7d8a70;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 0;
+  font-family: "Georgia", serif;
+  letter-spacing: 0.5px;
 }
 
 /* --- Camera Feeds --- */
-.camera-feeds-container { display: flex; flex-direction: column; gap: 20px; padding-top: 15px; }
-.camera-feed { background: #f8f9fa; border: 1px solid #dee2e6; padding: 15px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+.camera-feeds-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 15px;
+}
+.camera-feed {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
 
 .feed-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #e9ecef;
-    padding-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 5px;
 }
 .feed-header h3 {
-    font-size: 1.1rem;
-    color: #343a40;
-    margin-bottom: 0;
-    border-bottom: none;
+  font-size: 1.1rem;
+  color: #343a40;
+  margin-bottom: 0;
+  border-bottom: none;
 }
 .feed-toggle-button {
-    padding: 4px 10px;
-    font-size: 0.8rem;
-    background-color: #e0e0e0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    flex-shrink: 0;
-    color: #333; /* Button text color */
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+  color: #333; /* Button text color */
 }
-.feed-toggle-button:hover { background-color: #d0d0d0; }
-.feed-toggle-button:active { background-color: #c0c0c0; }
+.feed-toggle-button:hover {
+  background-color: #d0d0d0;
+}
+.feed-toggle-button:active {
+  background-color: #c0c0c0;
+}
 
 /* Image placeholder for both Live and Processed Static */
 #normal-feed-img.feed-placeholder {
-    min-height: 180px;
-    background-color: #343a40; /* Dark background */
-    color: #fff; /* White text for alt/fallback */
-    display: block; /* Ensure block display */
-    border-radius: 4px;
-    width: 100%;
-    object-fit: contain; /* Fit video/image within bounds */
+  min-height: 180px;
+  background-color: #343a40; /* Dark background */
+  color: #fff; /* White text for alt/fallback */
+  display: block; /* Ensure block display */
+  border-radius: 4px;
+  width: 100%;
+  object-fit: contain; /* Fit video/image within bounds */
 }
 
 /* Placeholder specifically for the thermal feed */
 #thermal-feed.feed-placeholder {
-    min-height: 180px;
-    background-color: #343a40;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 1rem;
-    border-radius: 4px;
-    width: 100%;
+  min-height: 180px;
+  background-color: #343a40;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1rem;
+  border-radius: 4px;
+  width: 100%;
 }
 
-
 /* --- Info Pane --- */
-#info-pane .page-content { padding-top: 15px; }
-.section-title { font-size: 1.3rem; color: #0056b3; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px solid #0056b3; display: inline-block; }
-.info-list { list-style: none; padding: 0; margin: 0; }
+#info-pane .page-content {
+  padding-top: 15px;
+}
+.section-title {
+  font-size: 1.3rem;
+  color: #0056b3;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #0056b3;
+  display: inline-block;
+}
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
 /* Illness List Item Styling */
 #disease-list .disease-item {
-    background-color: #fff; border: 1px solid #e0e0e0; padding: 15px;
-    margin-bottom: 10px; border-radius: 8px; cursor: pointer;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-    font-family: 'Cormorant Garamond', Georgia, Times, serif;
-    font-style: italic;
-    font-size: 1.25rem;
-    color: #405F36;
-    font-weight: 500;
-    position: relative;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.1s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  font-family: "Cormorant Garamond", Georgia, Times, serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: #405f36;
+  font-weight: 500;
+  position: relative;
 }
-#disease-list .disease-item:hover { background-color: #f8f9fa; box-shadow: 0 3px 5px rgba(0,0,0,0.08); }
-#disease-list .disease-item:active { transform: scale(0.98); background-color: #f0f2f5; }
+#disease-list .disease-item:hover {
+  background-color: #f8f9fa;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.08);
+}
+#disease-list .disease-item:active {
+  transform: scale(0.98);
+  background-color: #f0f2f5;
+}
 
 /* Bell Icon Button */
-.icon-button { background: none; border: none; cursor: pointer; font-size: 1.6rem; padding: 5px; color: #6c757d; transition: color 0.2s ease; -webkit-tap-highlight-color: transparent; }
-.icon-button:hover { color: #0056b3; }
-.icon-button:active { transform: scale(0.95); /* Basic press feedback */ } /* Added active state */
-
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.6rem;
+  padding: 5px;
+  color: #6c757d;
+  transition: color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.icon-button:hover {
+  color: #0056b3;
+}
+.icon-button:active {
+  transform: scale(0.95); /* Basic press feedback */
+} /* Added active state */
 
 /* --- Disease Details & Reports Overlay --- */
 .details-overlay {
-    position: fixed; /* Full screen overlay on mobile */
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-color: #ffffff;
-    z-index: 100; padding: 0;
-    animation: slideUp 0.3s ease-out;
-    display: none; /* Initially hidden, controlled by JS */
-    flex-direction: column;
+  position: fixed; /* Full screen overlay on mobile */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 100;
+  padding: 0;
+  animation: slideUp 0.3s ease-out;
+  display: none; /* Initially hidden, controlled by JS */
+  flex-direction: column;
 }
-@keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1;} }
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
 /* Header area within overlay */
-.details-overlay > h4, .details-overlay > .back-button {
-    padding-left: 20px; padding-right: 50px; /* Space for close button */
-    flex-shrink: 0; /* Prevent shrinking */
+.details-overlay > h4,
+.details-overlay > .back-button {
+  padding-left: 20px;
+  padding-right: 50px; /* Space for close button */
+  flex-shrink: 0; /* Prevent shrinking */
 }
 .details-overlay > h4 {
-    font-size: 1.4rem; margin-bottom: 10px; margin-top: 20px;
-    color: #0056b3; border-bottom: 1px solid #eee; padding-bottom: 10px;
-    display: flex; /* Use flex for icon alignment */
-    align-items: center;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  color: #0056b3;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  display: flex; /* Use flex for icon alignment */
+  align-items: center;
 }
-.details-overlay > h4 .icon { margin-right: 8px; font-size: 1.3rem; } /* Style for icon in reports header */
+.details-overlay > h4 .icon {
+  margin-right: 8px;
+  font-size: 1.3rem;
+} /* Style for icon in reports header */
 
 .details-overlay > .back-button {
-     margin-top: 18px; margin-bottom: 5px; color: #007bff;
-     font-weight: 500; background: none; border: none; font-size: 1rem;
-     cursor: pointer; padding: 8px 0;
-     align-self: flex-start; /* Align button left */
-     -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
+  margin-top: 18px;
+  margin-bottom: 5px;
+  color: #007bff;
+  font-weight: 500;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 8px 0;
+  align-self: flex-start; /* Align button left */
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
 }
 
 /* Close Button Styling */
 .close-button {
-    position: absolute; top: 15px; right: 15px;
-    background: none; border: none; color: #aaa; font-size: 1.8rem;
-    cursor: pointer; padding: 8px; line-height: 1; z-index: 101;
-    transition: color 0.2s ease, transform 0.1s ease;
-    -webkit-tap-highlight-color: transparent;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 8px;
+  line-height: 1;
+  z-index: 101;
+  transition:
+    color 0.2s ease,
+    transform 0.1s ease;
+  -webkit-tap-highlight-color: transparent;
 }
-.close-button:hover { color: #555; }
-.close-button:active { transform: scale(0.9); }
-
+.close-button:hover {
+  color: #555;
+}
+.close-button:active {
+  transform: scale(0.9);
+}
 
 /* Scrollable Content Wrapper */
 .details-content-wrapper {
-    overflow-y: auto; flex-grow: 1;
-    padding: 10px 20px 30px 20px;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  overflow-y: auto;
+  flex-grow: 1;
+  padding: 10px 20px 30px 20px;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 #disease-details .details-content-wrapper p {
-    margin-bottom: 18px; line-height: 1.7; color: #333;
-    word-wrap: break-word; overflow-wrap: break-word; white-space: normal;
+  margin-bottom: 18px;
+  line-height: 1.7;
+  color: #333;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 #disease-details .details-content-wrapper p strong {
-    color: #1c1e21; display: block; margin-bottom: 5px; font-weight: 600;
+  color: #1c1e21;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
 }
-#reports-list .details-content-wrapper { padding-top: 0; } /* No top padding if header is separate */
-
+#reports-list .details-content-wrapper {
+  padding-top: 0;
+} /* No top padding if header is separate */
 
 /* Reports List Specific Styling */
-.report-item { /* Style for items inside #reports-content */
-    background-color: #fff; border: 1px solid #e0e0e0; padding: 15px;
-    margin-bottom: 10px; border-radius: 8px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-    cursor: default;
+.report-item {
+  /* Style for items inside #reports-content */
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  cursor: default;
 }
-.report-item .report-meta { font-size: 0.85rem; color: #6c757d; margin-bottom: 5px; }
-.report-item .report-status { font-weight: bold; padding: 2px 6px; border-radius: 4px; font-size: 0.9rem; display: inline-block; margin-right: 10px; }
-.status-healthy { background-color: #d1e7dd; color: #0f5132; border: 1px solid #badbcc;}
-.status-warning { background-color: #fff3cd; color: #664d03; border: 1px solid #ffecb5;}
-.status-danger { background-color: #f8d7da; color: #842029; border: 1px solid #f5c2c7;}
-
+.report-item .report-meta {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-bottom: 5px;
+}
+.report-item .report-status {
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  display: inline-block;
+  margin-right: 10px;
+}
+.status-healthy {
+  background-color: #d1e7dd;
+  color: #0f5132;
+  border: 1px solid #badbcc;
+}
+.status-warning {
+  background-color: #fff3cd;
+  color: #664d03;
+  border: 1px solid #ffecb5;
+}
+.status-danger {
+  background-color: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+}
 
 /* --- Bottom Navigation Bar --- */
 .bottom-nav {
-    position: sticky; /* Stick to bottom of app-container */
-    bottom: 0;
-    left: 0; right: 0; height: 65px; background-color: #ffffff;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.08);
-    display: flex; justify-content: space-around; align-items: stretch; z-index: 50;
-    flex-shrink: 0; /* Prevent nav from shrinking */
+  position: sticky; /* Stick to bottom of app-container */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  background-color: #ffffff;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  z-index: 50;
+  flex-shrink: 0; /* Prevent nav from shrinking */
 }
-.nav-button { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: transparent; border: none; color: #8a8d91; cursor: pointer; padding: 5px 0; font-size: 0.75rem; transition: color 0.2s ease-in-out, transform 0.1s ease; text-align: center; -webkit-tap-highlight-color: transparent; }
-.nav-button .icon { font-size: 1.5rem; margin-bottom: 4px; }
-.nav-button:hover { color: #555; }
-.nav-button.active { color: #007bff; font-weight: 600; }
-.nav-button:active { transform: scale(0.95); }
-
+.nav-button {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  color: #8a8d91;
+  cursor: pointer;
+  padding: 5px 0;
+  font-size: 0.75rem;
+  transition:
+    color 0.2s ease-in-out,
+    transform 0.1s ease;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-button .icon {
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+}
+.nav-button:hover {
+  color: #555;
+}
+.nav-button.active {
+  color: #007bff;
+  font-weight: 600;
+}
+.nav-button:active {
+  transform: scale(0.95);
+}
 
 /* --- REMOVED Easter Egg Game Styles --- */
 
-
 /* --- Desktop / Wider Screen Adjustments --- */
 @media (min-width: 768px) {
-    .app-container {
-        max-width: 700px; margin: 20px auto;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        border-radius: 10px;
-        height: calc(100vh - 40px); /* Explicit height */
-        overflow: hidden; /* Prevent body scroll */
-    }
-    .bottom-nav {
-        position: static; /* Becomes part of the flow */
-        border-top: 1px solid #e0e0e0;
-        border-radius: 0 0 10px 10px; box-shadow: none; height: 60px;
-    }
-    .content-area {
-        padding: 0 25px; /* Adjust padding */
-        padding-bottom: 15px; /* Adjust bottom padding */
-    }
-    .camera-feeds-container {
-         flex-direction: row; /* Side-by-side */
-         align-items: flex-start; /* Align items top */
-         gap: 25px; /* Increase gap slightly */
-    }
-    .camera-feed {
-        flex: 1; /* Allow feeds to share space */
-        min-width: 0; /* Allow shrinking if needed */
-    }
-    /* Ensure feed images/placeholders don't overflow and maintain aspect ratio */
-    #normal-feed-img.feed-placeholder, #thermal-feed.feed-placeholder {
-        max-width: 100%;
-        height: auto; /* Maintain aspect ratio */
-        min-height: 200px; /* Adjust min-height for desktop maybe */
-    }
+  .app-container {
+    max-width: 700px;
+    margin: 20px auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    height: calc(100vh - 40px); /* Explicit height */
+    overflow: hidden; /* Prevent body scroll */
+  }
+  .bottom-nav {
+    position: static; /* Becomes part of the flow */
+    border-top: 1px solid #e0e0e0;
+    border-radius: 0 0 10px 10px;
+    box-shadow: none;
+    height: 60px;
+  }
+  .content-area {
+    padding: 0 25px; /* Adjust padding */
+    padding-bottom: 15px; /* Adjust bottom padding */
+  }
+  .camera-feeds-container {
+    flex-direction: row; /* Side-by-side */
+    align-items: flex-start; /* Align items top */
+    gap: 25px; /* Increase gap slightly */
+  }
+  .camera-feed {
+    flex: 1; /* Allow feeds to share space */
+    min-width: 0; /* Allow shrinking if needed */
+  }
+  /* Ensure feed images/placeholders don't overflow and maintain aspect ratio */
+  #normal-feed-img.feed-placeholder,
+  #thermal-feed.feed-placeholder {
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    min-height: 200px; /* Adjust min-height for desktop maybe */
+  }
 
-    /* Overlays become modal-like */
-    .details-overlay {
-         position: absolute; /* Position relative to content-area */
-         border-radius: 8px;
-         box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-         width: calc(100% - 50px); /* Relative to content-area padding */
-         height: auto; /* Let content define height */
-         max-height: calc(100% - 100px); /* Limit height within content area (adjust 100px if needed) */
-         left: 25px; /* Match content-area padding */
-         top: 70px; /* Position below sticky header (approximate) */
-         background-color: #ffffff;
-         bottom: auto; /* Reset bottom */
-         animation: fadeIn 0.2s ease-out; /* Use simpler fade for desktop modal */
+  /* Overlays become modal-like */
+  .details-overlay {
+    position: absolute; /* Position relative to content-area */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    width: calc(100% - 50px); /* Relative to content-area padding */
+    height: auto; /* Let content define height */
+    max-height: calc(
+      100% - 100px
+    ); /* Limit height within content area (adjust 100px if needed) */
+    left: 25px; /* Match content-area padding */
+    top: 70px; /* Position below sticky header (approximate) */
+    background-color: #ffffff;
+    bottom: auto; /* Reset bottom */
+    animation: fadeIn 0.2s ease-out; /* Use simpler fade for desktop modal */
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(0px);
     }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(0px); } to { opacity: 1; transform: translateY(0); } } /* Adjusted fade in */
-    .details-content-wrapper { padding-bottom: 20px; }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  } /* Adjusted fade in */
+  .details-content-wrapper {
+    padding-bottom: 20px;
+  }
 
-    .home-content {
-        padding-top: 30px; /* More padding on desktop */
-    }
-    .project-description {
-        max-width: 70%;
-        font-size: 1.2rem;
-    }
-    .placeholder-box {
-        width: 80%;
-        padding: 30px;
-    }
-    .app-title {
-        font-size: 5.5rem; /* Slightly larger on desktop */
-    }
+  .home-content {
+    padding-top: 30px; /* More padding on desktop */
+  }
+  .project-description {
+    max-width: 70%;
+    font-size: 1.2rem;
+  }
+  .placeholder-box {
+    width: 80%;
+    padding: 30px;
+  }
+  .app-title {
+    font-size: 5.5rem; /* Slightly larger on desktop */
+  }
 }
