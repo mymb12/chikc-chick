@@ -13,7 +13,6 @@ i2c = busio.I2C(board.SCL, board.SDA, frequency=400000)
 print("📷 Initializing MLX90640...")
 mlx = adafruit_mlx90640.MLX90640(i2c)
 mlx.refresh_rate = adafruit_mlx90640.RefreshRate.REFRESH_2_HZ
-mlx.calibration_mode = adafruit_mlx90640.CalibrationMode.MLX90640_CHESS_MODE
 
 print("MLX90640 serial number:", [hex(i) for i in mlx.serial_number])
 
