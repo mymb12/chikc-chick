@@ -1,113 +1,173 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
     <title>Januya - Мониторинг</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
-</head>
-<body>
-
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="app-container">
-        <div class="content-area">
-            <!-- Home Pane -->
-            <div id="home-pane" class="tab-pane active">
-                <header class="page-header home-header">
-                    <h1 class="app-title">Januya</h1>
-                </header>
-                <section class="page-content home-content">
-                    <p class="project-description">
-                        Умный мониторинг здоровья для вашей птицефермы.
-                        <br>(Smart health monitoring for your poultry farm.)
-                    </p>
-                    <div class="placeholder-box">
-                        Здесь может быть краткая сводка состояния или быстрые действия.
-                    </div>
-                    <div class="home-icon-slogan-area">
-                        <svg class="chicken-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                          <ellipse fill="#FFC107" cx="50" cy="55" rx="35" ry="30"/>
-                          <circle fill="#FFC107" cx="50" cy="35" r="20"/>
-                          <circle fill="#222" cx="58" cy="32" r="3"/>
-                          <path fill="#FF5722" d="M45 18 Q 48 12, 52 18 T 60 18 Q 55 25, 50 28 Q 45 25, 45 18 Z"/>
-                          <polygon fill="#FF9800" points="65,35 70,38 65,41"/>
-                          <ellipse fill="#FF5722" cx="62" cy="46" rx="4" ry="6" transform="rotate(15 62 46)"/>
-                        </svg>
-                        <p class="slogan">Januya - It's about care.</p>
-                    </div>
-                </section>
+      <div class="content-area">
+        <div id="home-pane" class="tab-pane active">
+          <header class="page-header home-header">
+            <h1 class="app-title">Januya</h1>
+          </header>
+          <section class="page-content home-content">
+            <p class="project-description">
+              Умный мониторинг здоровья для вашей птицефермы.
+              <br />(Smart health monitoring for your poultry farm.)
+            </p>
+            <div class="placeholder-box">
+              Здесь может быть краткая сводка состояния или быстрые действия.
             </div>
-
-            <!-- Camera Pane -->
-            <div id="camera-pane" class="tab-pane">
-                 <header class="page-header"><h2><span class="icon">📷</span> Камеры</h2></header>
-                 <section class="page-content camera-feeds-container">
-                    <div class="camera-feed">
-                        <h3>Тепловизор (Симуляция)</h3>
-                        <div id="thermal-feed" class="feed-placeholder">Тепловизор - Нет Симуляции</div>
-                    </div>
-                    <div class="camera-feed">
-                        <div class="feed-header">
-                            <!-- <<< MODIFIED Header Text >>> -->
-                            <h3>Камера / Видео (Движение)</h3>
-                            <button id="toggle-feed-btn" class="feed-toggle-button">Показать Видео</button>
-                        </div>
-                        <!-- Live/Processed Feed Image -->
-                        <img id="normal-feed-img" class="feed-placeholder" alt="Загрузка потока..." width="100%">
-                    </div>
-                </section>
+            <div class="home-icon-slogan-area">
+              <svg
+                class="chicken-icon"
+                viewBox="0 0 100 100"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <ellipse fill="#FFC107" cx="50" cy="55" rx="35" ry="30" />
+                <circle fill="#FFC107" cx="50" cy="35" r="20" />
+                <circle fill="#222" cx="58" cy="32" r="3" />
+                <path
+                  fill="#FF5722"
+                  d="M45 18 Q 48 12, 52 18 T 60 18 Q 55 25, 50 28 Q 45 25, 45 18 Z"
+                />
+                <polygon fill="#FF9800" points="65,35 70,38 65,41" />
+                <ellipse
+                  fill="#FF5722"
+                  cx="62"
+                  cy="46"
+                  rx="4"
+                  ry="6"
+                  transform="rotate(15 62 46)"
+                />
+              </svg>
+              <p class="slogan">Januya - It's about care.</p>
             </div>
+          </section>
+        </div>
 
-            <!-- Info Pane -->
-            <div id="info-pane" class="tab-pane">
-                <header class="page-header">
-                    <h2><span class="icon">❓</span> Информация</h2>
-                    <button id="reports-bell" class="icon-button bell-icon">🔔</button>
-                </header>
-                <section class="page-content">
-                    <div id="disease-section">
-                        <h3 class="section-title">Болезни Кур</h3>
-                        <ul id="disease-list" class="info-list">
-                            <li class="disease-item" data-disease-id="coccidiosis">Кокцидиоз</li>
-                            <li class="disease-item" data-disease-id="mareks">Болезнь Марека</li>
-                            <li class="disease-item" data-disease-id="newcastle">Болезнь Ньюкасла</li>
-                            <li class="disease-item" data-disease-id="pullorosis">Пуллороз</li>
-                            <li class="disease-item" data-disease-id="pasteurellosis">Пастереллёз</li>
-                        </ul>
-                    </div>
-                    <!-- Disease Details Overlay -->
-                    <div id="disease-details" class="details-overlay" style="display: none;">
-                         <button class="back-button" data-target="disease-details">← Назад к списку</button>
-                         <button class="close-button" data-target="disease-details">✖</button>
-                        <h4 id="disease-detail-title">Название Болезни</h4>
-                        <div class="details-content-wrapper" id="disease-detail-content">
-                            <p><strong>Симптомы:</strong> <span id="disease-symptoms">...</span></p>
-                            <p><strong>Лечение:</strong> <span id="disease-cure">...</span></p>
-                            <p><strong>Профилактика:</strong> <span id="disease-prevention">...</span></p>
-                        </div>
-                    </div>
-                    <!-- Reports Overlay -->
-                    <div id="reports-list" class="details-overlay" style="display: none;">
-                        <button class="close-button" data-target="reports-list">✖</button>
-                        <h4><span class="icon">📄</span> Последние Отчеты</h4>
-                        <div class="details-content-wrapper" id="reports-content">
-                            <p>Нет доступных отчетов.</p>
-                        </div>
-                    </div>
-                </section>
+        <div id="camera-pane" class="tab-pane">
+          <header class="page-header">
+            <h2><span class="icon">📷</span> Камеры</h2>
+          </header>
+          <section class="page-content camera-feeds-container">
+            <div class="camera-feed">
+              <h3>Тепловизор (Симуляция)</h3>
+              <div id="thermal-feed" class="feed-placeholder">
+                Тепловизор - Нет Симуляции
+              </div>
             </div>
-        </div> <!-- End Content Area -->
+            <div class="camera-feed">
+              <div class="feed-header">
+                <h3>Камера / Видео (Движение)</h3>
+                <button id="toggle-feed-btn" class="feed-toggle-button">
+                  Показать Видео
+                </button>
+              </div>
+              <img
+                id="normal-feed-img"
+                class="feed-placeholder"
+                alt="Загрузка потока..."
+                width="100%"
+              />
+            </div>
+          </section>
+        </div>
 
-        <!-- Bottom Navigation Bar -->
-        <nav class="bottom-nav">
-            <button class="nav-button" data-tab="camera-pane"><span class="icon">📷</span><span class="label">Камеры</span></button>
-            <button class="nav-button active" data-tab="home-pane"><span class="icon">🏠</span><span class="label">Главная</span></button>
-            <button class="nav-button" data-tab="info-pane"><span class="icon">❓</span><span class="label">Инфо</span></button>
-        </nav>
-    </div> <!-- End App Container -->
+        <div id="info-pane" class="tab-pane">
+          <header class="page-header">
+            <h2><span class="icon">❓</span> Информация</h2>
+            <button id="reports-bell" class="icon-button bell-icon">🔔</button>
+          </header>
+          <section class="page-content">
+            <div id="disease-section">
+              <h3 class="section-title">Болезни Кур</h3>
+              <ul id="disease-list" class="info-list">
+                <li class="disease-item" data-disease-id="coccidiosis">
+                  Кокцидиоз
+                </li>
+                <li class="disease-item" data-disease-id="mareks">
+                  Болезнь Марека
+                </li>
+                <li class="disease-item" data-disease-id="newcastle">
+                  Болезнь Ньюкасла
+                </li>
+                <li class="disease-item" data-disease-id="pullorosis">
+                  Пуллороз
+                </li>
+                <li class="disease-item" data-disease-id="pasteurellosis">
+                  Пастереллёз
+                </li>
+              </ul>
+            </div>
+            <div
+              id="disease-details"
+              class="details-overlay"
+              style="display: none"
+            >
+              <button class="back-button" data-target="disease-details">
+                ← Назад к списку
+              </button>
+              <button class="close-button" data-target="disease-details">
+                ✖
+              </button>
+              <h4 id="disease-detail-title">Название Болезни</h4>
+              <div class="details-content-wrapper" id="disease-detail-content">
+                <p>
+                  <strong>Симптомы:</strong>
+                  <span id="disease-symptoms">...</span>
+                </p>
+                <p>
+                  <strong>Лечение:</strong> <span id="disease-cure">...</span>
+                </p>
+                <p>
+                  <strong>Профилактика:</strong>
+                  <span id="disease-prevention">...</span>
+                </p>
+              </div>
+            </div>
+            <div
+              id="reports-list"
+              class="details-overlay"
+              style="display: none"
+            >
+              <button class="close-button" data-target="reports-list">
+                ✖
+              </button>
+              <h4><span class="icon">📄</span> Последние Отчеты</h4>
+              <div class="details-content-wrapper" id="reports-content">
+                <p>Нет доступных отчетов.</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <nav class="bottom-nav">
+        <button class="nav-button" data-tab="camera-pane">
+          <span class="icon">📷</span><span class="label">Камеры</span>
+        </button>
+        <button class="nav-button active" data-tab="home-pane">
+          <span class="icon">🏠</span><span class="label">Главная</span>
+        </button>
+        <button class="nav-button" data-tab="info-pane">
+          <span class="icon">❓</span><span class="label">Инфо</span>
+        </button>
+      </nav>
+    </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

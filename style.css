@@ -1,4 +1,3 @@
-/* Basic Reset & Body */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -13,8 +12,8 @@ body {
     sans-serif;
   line-height: 1.6;
   background-color: #f0f2f5;
-  color: #5a8f4d; /* Default text color, though might be overridden often */
-  -webkit-font-smoothing: antialiased; /* Improve font rendering */
+  color: #5a8f4d;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
@@ -27,28 +26,26 @@ body {
   flex-direction: column;
 }
 
-/* Content Area */
 .content-area {
-  flex-grow: 1; /* Allows content area to expand */
-  padding: 0 15px; /* Only horizontal padding */
-  display: flex; /* Make content area a flex container */
-  flex-direction: column; /* Stack its children (the panes) */
-  overflow-y: auto; /* Allow scrolling ONLY if content overflows */
-  padding-bottom: 25px; /* Add padding at the bottom INSIDE the scrollable area */
-  position: relative; /* Needed for absolute positioning of overlays on desktop */
+  flex-grow: 1;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding-bottom: 25px;
+  position: relative;
 }
 
-/* Tab Panes */
 .tab-pane {
-  display: none; /* Hide inactive panes */
+  display: none;
   animation: fadeIn 0.3s ease-in-out;
   width: 100%;
-  flex-shrink: 0; /* Prevent panes from shrinking */
+  flex-shrink: 0;
 }
 .tab-pane.active {
-  display: flex; /* Make active pane a flex container */
-  flex-direction: column; /* Stack its children (header, content section) */
-  flex-grow: 1; /* Allow active pane to expand within content-area */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 @keyframes fadeIn {
   from {
@@ -61,32 +58,29 @@ body {
   }
 }
 
-/* Page Header (Shared style) */
 .page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 0 15px 0; /* Adjusted padding */
+  padding: 18px 0 15px 0;
   margin-bottom: 15px;
   border-bottom: 1px solid #e0e0e0;
-  /* Sticky header with blur effect */
   position: sticky;
   top: 0;
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(5px);
   z-index: 10;
-  flex-shrink: 0; /* Prevent header from shrinking */
+  flex-shrink: 0;
 }
 .home-header {
-  /* Specific for Home */
-  justify-content: center; /* Center title */
-  border-bottom: none; /* Remove border */
+  justify-content: center;
+  border-bottom: none;
   padding-top: 25px;
   padding-bottom: 10px;
-  margin-bottom: 0; /* No margin below home header */
+  margin-bottom: 0;
   background-color: transparent;
   backdrop-filter: none;
-  position: static; /* Remove sticky for home */
+  position: static;
 }
 .page-header h2,
 .page-header h1 {
@@ -99,40 +93,34 @@ body {
   margin-right: 8px;
   font-size: 1.3rem;
   vertical-align: middle;
-} /* Align icon better */
+}
 
-/* --- App Title Styling --- */
 .app-title {
   font-size: 5.2rem;
   text-align: center;
-  color: #5a8f4d; /* Green color */
+  color: #5a8f4d;
   padding: 0;
   margin: 0 0 15px 0;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-  font-family: "Cormorant Garamond", serif; /* Use the italic font */
-  font-weight: 500; /* Adjust weight as needed */
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
   font-style: italic;
 }
 
-/* Page Content section (within panes) */
 .page-content {
-  flex-grow: 1; /* Allow content section to expand */
-  display: flex; /* Make it a flex container */
-  flex-direction: column; /* Stack its children */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Home Content specific layout */
 .home-content {
-  /* Inherits flex settings from .page-content */
-  align-items: center; /* Center children horizontally */
+  align-items: center;
   text-align: center;
   width: 100%;
   padding-top: 20px;
-  /* Use flex properties to push icon/slogan down */
-  justify-content: space-between; /* Push elements apart vertically */
+  justify-content: space-between;
 }
 
-/* Project Description Styling */
 .project-description {
   font-size: 1.15rem;
   color: #505050;
@@ -145,7 +133,6 @@ body {
   font-family: Georgia, Times, serif;
 }
 
-/* Placeholder Box Styling */
 .placeholder-box {
   background-color: #f8f9fa;
   border: 1px solid #e9ecef;
@@ -155,17 +142,16 @@ body {
   border-radius: 10px;
   width: 90%;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
-  margin-top: 20px; /* Add some space above */
-  margin-bottom: 40px; /* Add space below */
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
-/* Chicken Icon and Slogan Area */
 .home-icon-slogan-area {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 30px 0 40px 0; /* Spacing */
+  padding: 30px 0 40px 0;
   flex-shrink: 0;
   position: relative;
   z-index: 1;
@@ -176,7 +162,7 @@ body {
   height: 45px;
   margin-bottom: 8px;
   filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.15));
-  transform: scaleX(-1); /* Flip chicken */
+  transform: scaleX(-1);
   opacity: 0.8;
 }
 
@@ -190,7 +176,6 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* --- Camera Feeds --- */
 .camera-feeds-container {
   display: flex;
   flex-direction: column;
@@ -228,7 +213,7 @@ body {
   cursor: pointer;
   transition: background-color 0.2s ease;
   flex-shrink: 0;
-  color: #333; /* Button text color */
+  color: #333;
 }
 .feed-toggle-button:hover {
   background-color: #d0d0d0;
@@ -237,18 +222,16 @@ body {
   background-color: #c0c0c0;
 }
 
-/* Image placeholder for both Live and Processed Static */
 #normal-feed-img.feed-placeholder {
   min-height: 180px;
-  background-color: #343a40; /* Dark background */
-  color: #fff; /* White text for alt/fallback */
-  display: block; /* Ensure block display */
+  background-color: #343a40;
+  color: #fff;
+  display: block;
   border-radius: 4px;
   width: 100%;
-  object-fit: contain; /* Fit video/image within bounds */
+  object-fit: contain;
 }
 
-/* Placeholder specifically for the thermal feed */
 #thermal-feed.feed-placeholder {
   min-height: 180px;
   background-color: #343a40;
@@ -262,7 +245,6 @@ body {
   width: 100%;
 }
 
-/* --- Info Pane --- */
 #info-pane .page-content {
   padding-top: 15px;
 }
@@ -280,7 +262,6 @@ body {
   margin: 0;
 }
 
-/* Illness List Item Styling */
 #disease-list .disease-item {
   background-color: #fff;
   border: 1px solid #e0e0e0;
@@ -309,7 +290,6 @@ body {
   background-color: #f0f2f5;
 }
 
-/* Bell Icon Button */
 .icon-button {
   background: none;
   border: none;
@@ -324,12 +304,11 @@ body {
   color: #0056b3;
 }
 .icon-button:active {
-  transform: scale(0.95); /* Basic press feedback */
-} /* Added active state */
+  transform: scale(0.95);
+}
 
-/* --- Disease Details & Reports Overlay --- */
 .details-overlay {
-  position: fixed; /* Full screen overlay on mobile */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -338,7 +317,7 @@ body {
   z-index: 100;
   padding: 0;
   animation: slideUp 0.3s ease-out;
-  display: none; /* Initially hidden, controlled by JS */
+  display: none;
   flex-direction: column;
 }
 @keyframes slideUp {
@@ -352,12 +331,11 @@ body {
   }
 }
 
-/* Header area within overlay */
 .details-overlay > h4,
 .details-overlay > .back-button {
   padding-left: 20px;
-  padding-right: 50px; /* Space for close button */
-  flex-shrink: 0; /* Prevent shrinking */
+  padding-right: 50px;
+  flex-shrink: 0;
 }
 .details-overlay > h4 {
   font-size: 1.4rem;
@@ -366,13 +344,13 @@ body {
   color: #0056b3;
   border-bottom: 1px solid #eee;
   padding-bottom: 10px;
-  display: flex; /* Use flex for icon alignment */
+  display: flex;
   align-items: center;
 }
 .details-overlay > h4 .icon {
   margin-right: 8px;
   font-size: 1.3rem;
-} /* Style for icon in reports header */
+}
 
 .details-overlay > .back-button {
   margin-top: 18px;
@@ -384,11 +362,10 @@ body {
   font-size: 1rem;
   cursor: pointer;
   padding: 8px 0;
-  align-self: flex-start; /* Align button left */
-  -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
+  align-self: flex-start;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Close Button Styling */
 .close-button {
   position: absolute;
   top: 15px;
@@ -413,12 +390,11 @@ body {
   transform: scale(0.9);
 }
 
-/* Scrollable Content Wrapper */
 .details-content-wrapper {
   overflow-y: auto;
   flex-grow: 1;
   padding: 10px 20px 30px 20px;
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
 }
 #disease-details .details-content-wrapper p {
   margin-bottom: 18px;
@@ -436,11 +412,9 @@ body {
 }
 #reports-list .details-content-wrapper {
   padding-top: 0;
-} /* No top padding if header is separate */
+}
 
-/* Reports List Specific Styling */
 .report-item {
-  /* Style for items inside #reports-content */
   background-color: #fff;
   border: 1px solid #e0e0e0;
   padding: 15px;
@@ -478,9 +452,8 @@ body {
   border: 1px solid #f5c2c7;
 }
 
-/* --- Bottom Navigation Bar --- */
 .bottom-nav {
-  position: sticky; /* Stick to bottom of app-container */
+  position: sticky;
   bottom: 0;
   left: 0;
   right: 0;
@@ -491,7 +464,7 @@ body {
   justify-content: space-around;
   align-items: stretch;
   z-index: 50;
-  flex-shrink: 0; /* Prevent nav from shrinking */
+  flex-shrink: 0;
 }
 .nav-button {
   flex: 1;
@@ -526,61 +499,54 @@ body {
   transform: scale(0.95);
 }
 
-/* --- REMOVED Easter Egg Game Styles --- */
-
-/* --- Desktop / Wider Screen Adjustments --- */
 @media (min-width: 768px) {
   .app-container {
     max-width: 700px;
     margin: 20px auto;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    height: calc(100vh - 40px); /* Explicit height */
-    overflow: hidden; /* Prevent body scroll */
+    height: calc(100vh - 40px);
+    overflow: hidden;
   }
   .bottom-nav {
-    position: static; /* Becomes part of the flow */
+    position: static;
     border-top: 1px solid #e0e0e0;
     border-radius: 0 0 10px 10px;
     box-shadow: none;
     height: 60px;
   }
   .content-area {
-    padding: 0 25px; /* Adjust padding */
-    padding-bottom: 15px; /* Adjust bottom padding */
+    padding: 0 25px;
+    padding-bottom: 15px;
   }
   .camera-feeds-container {
-    flex-direction: row; /* Side-by-side */
-    align-items: flex-start; /* Align items top */
-    gap: 25px; /* Increase gap slightly */
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 25px;
   }
   .camera-feed {
-    flex: 1; /* Allow feeds to share space */
-    min-width: 0; /* Allow shrinking if needed */
+    flex: 1;
+    min-width: 0;
   }
-  /* Ensure feed images/placeholders don't overflow and maintain aspect ratio */
   #normal-feed-img.feed-placeholder,
   #thermal-feed.feed-placeholder {
     max-width: 100%;
-    height: auto; /* Maintain aspect ratio */
-    min-height: 200px; /* Adjust min-height for desktop maybe */
+    height: auto;
+    min-height: 200px;
   }
 
-  /* Overlays become modal-like */
   .details-overlay {
-    position: absolute; /* Position relative to content-area */
+    position: absolute;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-    width: calc(100% - 50px); /* Relative to content-area padding */
-    height: auto; /* Let content define height */
-    max-height: calc(
-      100% - 100px
-    ); /* Limit height within content area (adjust 100px if needed) */
-    left: 25px; /* Match content-area padding */
-    top: 70px; /* Position below sticky header (approximate) */
+    width: calc(100% - 50px);
+    height: auto;
+    max-height: calc(100% - 100px);
+    left: 25px;
+    top: 70px;
     background-color: #ffffff;
-    bottom: auto; /* Reset bottom */
-    animation: fadeIn 0.2s ease-out; /* Use simpler fade for desktop modal */
+    bottom: auto;
+    animation: fadeIn 0.2s ease-out;
   }
   @keyframes fadeIn {
     from {
@@ -591,13 +557,13 @@ body {
       opacity: 1;
       transform: translateY(0);
     }
-  } /* Adjusted fade in */
+  }
   .details-content-wrapper {
     padding-bottom: 20px;
   }
 
   .home-content {
-    padding-top: 30px; /* More padding on desktop */
+    padding-top: 30px;
   }
   .project-description {
     max-width: 70%;
@@ -608,6 +574,6 @@ body {
     padding: 30px;
   }
   .app-title {
-    font-size: 5.5rem; /* Slightly larger on desktop */
+    font-size: 5.5rem;
   }
 }

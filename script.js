@@ -1,6 +1,4 @@
-// --- START OF FILE script.js ---
 document.addEventListener("DOMContentLoaded", () => {
-  // --- Element Selections ---
   const navButtons = document.querySelectorAll(".bottom-nav .nav-button");
   const tabPanes = document.querySelectorAll(".tab-pane");
   const normalFeedImg = document.getElementById("normal-feed-img");
@@ -15,11 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const reportsContent = document.getElementById("reports-content");
   const toggleFeedBtn = document.getElementById("toggle-feed-btn");
 
-  // --- Constants ---
   const wsProtocol = window.location.protocol === "https:" ? "wss:" : "ws:";
   const wsUrl = `${wsProtocol}//${window.location.host}/ws`;
 
-  // --- State ---
   let socket = null;
   let currentVideoUrl = null;
   let activeTabId =
@@ -30,9 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let reconnectTimer = null;
   let isLiveFeedActive = true;
 
-  // --- Simulated Data ---
   const diseaseData = {
-    /* ... (keep existing disease data) ... */
     coccidiosis: {
       name: "Кокцидиоз",
       symptoms:
@@ -75,7 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   function generateSimulatedReports() {
-    /* ... (keep existing report generation) ... */
     const reports = [];
     const statuses = [
       { text: "Здоровье", class: "status-healthy" },
@@ -149,7 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return reports;
   }
 
-  // --- WebSocket Functions ---
   function connectWebSocket() {
     if (
       socket &&
@@ -176,7 +168,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const streamToSubscribe = isLiveFeedActive
           ? "normal_video"
           : "static_video";
-        // <<< MODIFIED Alt Text >>>
         const statusMsg = isLiveFeedActive
           ? "Запрос live потока (детектор движения)..."
           : "Запрос video потока (детектор движения)...";
@@ -200,7 +191,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             normalFeedImg.src = newUrl;
             currentVideoUrl = newUrl;
-            // <<< MODIFIED Alt Text >>>
             normalFeedImg.alt = isLiveFeedActive
               ? "Прямая трансляция (Детектор Движения)"
               : "Обработанное видео (Детектор Движения)";
@@ -284,7 +274,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!currentVideoUrl && !normalFeedImg.src) {
         normalFeedImg.alt = statusText;
       } else if (!normalFeedImg.src) {
-        // <<< MODIFIED Alt Text >>>
         normalFeedImg.alt = isLiveFeedActive
           ? "Прямая трансляция (Детектор Движения)"
           : "Обработанное видео (Детектор Движения)";
@@ -296,7 +285,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --- Tab Switching Logic ---
   navButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const targetPaneId = button.getAttribute("data-tab");
@@ -318,7 +306,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(
           `[Tab] Switched TO Camera (Mode: ${isLiveFeedActive ? "Live" : "Static"})`,
         );
-        // <<< MODIFIED Alt Text >>>
         const statusMsg = isLiveFeedActive
           ? "Запрос live потока (детектор движения)..."
           : "Запрос video потока (детектор движения)...";
@@ -350,9 +337,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- Info Pane & Overlay Logic ---
   function showOverlay(overlayElement) {
-    /* ... (keep as is) ... */
     if (!overlayElement) {
       console.error("showOverlay: Element not found!");
       return;
@@ -360,12 +345,10 @@ document.addEventListener("DOMContentLoaded", () => {
     overlayElement.style.display = "flex";
   }
   function hideOverlay(overlayElement) {
-    /* ... (keep as is) ... */
     if (!overlayElement) return;
     overlayElement.style.display = "none";
   }
   if (diseaseList) {
-    /* ... (keep as is) ... */
     diseaseList.addEventListener("click", (event) => {
       const listItem = event.target.closest(".disease-item");
       if (!listItem) return;
@@ -392,7 +375,6 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("Element with ID 'disease-list' not found!");
   }
   if (reportsBell) {
-    /* ... (keep as is) ... */
     reportsBell.addEventListener("click", () => {
       if (!reportsContent || !reportsListPane) {
         console.error("Missing reports elements");
@@ -420,7 +402,6 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("Element with ID 'reports-bell' not found!");
   }
   document.body.addEventListener("click", (event) => {
-    /* ... (keep as is) ... */
     const overlay = event.target.closest(".details-overlay");
     if (!overlay) return;
     const backButton = event.target.closest(".back-button");
@@ -430,7 +411,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- Camera Feed Toggle Button Logic ---
   if (toggleFeedBtn && normalFeedImg) {
     toggleFeedBtn.addEventListener("click", () => {
       isLiveFeedActive = !isLiveFeedActive;
@@ -448,7 +428,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const newStream = isLiveFeedActive ? "normal_video" : "static_video";
       const oldStream = isLiveFeedActive ? "static_video" : "normal_video";
-      // <<< MODIFIED Alt Text >>>
       const statusMsg = isLiveFeedActive
         ? "Запрос live потока (детектор движения)..."
         : "Запрос video потока (детектор движения)...";
@@ -471,13 +450,11 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error("Could not find toggle button or feed image element!");
   }
 
-  // --- Initialisation ---
   console.log("DOM Loaded. Initializing...");
   if (toggleFeedBtn) {
     toggleFeedBtn.textContent = isLiveFeedActive
       ? "Показать Видео"
       : "Камера (Live)";
   }
-  connectWebSocket(); // Initial connection attempt
-}); // End DOMContentLoaded
-// --- END OF FILE script.js ---
+  connectWebSocket();
+});
